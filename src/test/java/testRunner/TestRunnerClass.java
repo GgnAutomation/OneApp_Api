@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(dryRun = false, monochrome = true, plugin = {
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, glue = {
 				"stepDefinition" }, features = {
-						"src/test/resources/Features/ScratchCardService_OneApp.feature" }, tags = "@InvaildMobNo")
+						"src/test/resources/Features/Login_OneApp.feature" }, tags = "@Valid_Otp")
 
 public class TestRunnerClass extends AbstractTestNGCucumberTests {
 
