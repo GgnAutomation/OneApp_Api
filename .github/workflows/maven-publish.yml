@@ -1,0 +1,33 @@
+name: LambdaTest API Automation
+
+on:
+  push:
+    branches:
+      - main  # Change to your branch name
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17  # Use LTS version
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # Change to '23' only if required
+          cache: 'maven'
+
+      - name: Install Dependencies
+        run: mvn clean install -DskipTests
+
+      - name: Run API Tests on LambdaTest
+        env:
+          LT_USERNAME: ${{ secrets.LT_USERNAME }}
+          LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+        run: mvn test -Dcucumber.filter.tags="@APITests"
