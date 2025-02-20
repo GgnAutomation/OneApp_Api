@@ -26,6 +26,10 @@ jobs:
       - name: Install Dependencies
         run: mvn clean install -DskipTests
 
+      # 🛠 Debug Step: List Feature Files
+      - name: Debug - List Feature Files
+        run: ls -R src/test/resources/Features || echo "Feature files not found"
+
       - name: Run API Tests on LambdaTest
         env:
           LT_USERNAME: ${{ secrets.LT_USERNAME }}
