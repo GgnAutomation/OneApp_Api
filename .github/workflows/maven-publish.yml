@@ -16,11 +16,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17  # Use LTS version
+      - name: Set up JDK 21  # Use LTS version
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'  # Change to '23' only if required
+          java-version: '21'  # Change to '23' only if required
           cache: 'maven'
 
       - name: Install Dependencies
